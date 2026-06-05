@@ -19,13 +19,6 @@
     "oh-my-openagent@latest"
   ],
   "provider": {
-    "ppchat": {
-      "apiKey": "sk-YG9ZRtbEDsxb4GRwkPKlNZ1uSUq3Tq0UGccSoKdL4sBqxeik",
-      "baseURL": "https://code.ddsst.online/v1",
-      "models": {
-        "gpt-5.5": {}
-      }
-    },
     "ppchat1": {
       "models": {
         "gpt-5.5": {
@@ -35,6 +28,19 @@
       "npm": "@ai-sdk/openai",
       "options": {
         "apiKey": "sk-YG9ZRtbEDsxb4GRwkPKlNZ1uSUq3Tq0UGccSoKdL4sBqxeik",
+        "baseURL": "https://code.ddsst.online/v1",
+        "setCacheKey": true
+      }
+    },
+    "ddsst": {
+      "models": {
+        "gpt-5.5": {
+          "name": ""
+        }
+      },
+      "npm": "@ai-sdk/openai",
+      "options": {
+        "apiKey": "sk-NIC55HFj74TVZanCB1eMEZ4ECwHQ3UocW4KG1UyoselxU4Ot",
         "baseURL": "https://code.ddsst.online/v1",
         "setCacheKey": true
       }
