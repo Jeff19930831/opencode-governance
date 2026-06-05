@@ -25,7 +25,7 @@
           "name": ""
         }
       },
-      "npm": "@ai-sdk/openai",
+      "npm": "@ai-sdk/openai-compatible",
       "options": {
         "apiKey": "sk-YG9ZRtbEDsxb4GRwkPKlNZ1uSUq3Tq0UGccSoKdL4sBqxeik",
         "baseURL": "https://code.ddsst.online/v1",
@@ -38,7 +38,7 @@
           "name": ""
         }
       },
-      "npm": "@ai-sdk/openai",
+      "npm": "@ai-sdk/openai-compatible",
       "options": {
         "apiKey": "sk-NIC55HFj74TVZanCB1eMEZ4ECwHQ3UocW4KG1UyoselxU4Ot",
         "baseURL": "https://code.ddsst.online/v1",
