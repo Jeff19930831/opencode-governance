@@ -22,7 +22,8 @@
     "ppchat1": {
       "models": {
         "gpt-5.5": {
-          "name": ""
+          "name": "",
+          "reasoning": false
         }
       },
       "npm": "@ai-sdk/openai-compatible",
@@ -35,7 +36,8 @@
     "ddsst": {
       "models": {
         "gpt-5.5": {
-          "name": ""
+          "name": "",
+          "reasoning": false
         }
       },
       "npm": "@ai-sdk/openai-compatible",
