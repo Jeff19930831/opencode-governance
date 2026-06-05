@@ -32,14 +32,33 @@ opencode team list
 
 ## 场景 2: Secret/Key 丢失
 
-### ppchat1 API Key
+### ⚠️ 双密钥库陷阱（改 key 必读）
+
+opencode 把每个 provider 的 key **同时**存在两处，`auth.json` 会按 provider id **覆盖** config 里的 key。只改一处会出现「改了配置还是用不了」：
+
+| 位置 | 字段 |
+|------|------|
+| `~/.config/opencode/opencode.json` | `provider.<名>.options.apiKey` |
+| `~/.local/share/opencode/auth.json` | `<名>.key` |
+
+**改 key 时两处必须同步更新**。验证一致性：
+
+```bash
+node -e 'const a=require(process.env.HOME+"/.local/share/opencode/auth.json"),c=require(process.env.HOME+"/.config/opencode/opencode.json");for(const p of Object.keys(c.provider||{})){const ak=a[p]&&a[p].key,ck=c.provider[p].options&&c.provider[p].options.apiKey;console.log(p, ak===ck?"MATCH":"MISMATCH ❌", ak?ak.slice(-6):"(no auth)")}'
+```
+
+> 官方更省事的做法：key 只放 `auth.json`（`opencode auth login`），config 里 provider 不写 `apiKey`。但本治理标准把 key 写在 config，所以保持两边同步。
+> 另：删 provider 时记得一并删 `auth.json` 里的同名孤儿项。
+
+### ppchat1 / ddsst API Key
 
 来源: https://code.ddsst.online/
 恢复步骤:
 1. 登录管理后台
 2. 重新生成 API Key
-3. 更新 `~/.config/opencode/opencode.json`
-4. 同步更新本仓库 `configs/opencode.json`
+3. 更新 `~/.config/opencode/opencode.json` 的 `provider.<名>.options.apiKey`
+4. **同步更新 `~/.local/share/opencode/auth.json` 的 `<名>.key`**（见上方双密钥库陷阱）
+5. 同步更新本仓库 `configs/opencode.json`
 
 ### zai-coding-plan API Key
 
