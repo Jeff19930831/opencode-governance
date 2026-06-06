@@ -1,51 +1,44 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ppchat-codex": {
+      "npm": "@ai-sdk/openai",
+      "options": {
+        "baseURL": "https://code.ppchat.vip/v1",
+        "apiKey": "sk-YG9ZRtbEDsxb4GRwkPKlNZ1uSUq3Tq0UGccSoKdL4sBqxeik"
+      },
+      "models": {
+        "gpt-5.5": {
+          "name": "gpt-5.5",
+          "options": {
+            "reasoningEffort": "high"
+          }
+        }
+      }
+    }
+  },
+  "plugin": [
+    "oh-my-openagent@latest"
+  ],
   "mcp": {
     "agentmemory": {
+      "type": "local",
       "command": [
+        "cmd",
+        "/c",
         "npx",
         "-y",
         "@agentmemory/mcp"
       ],
       "enabled": true,
       "environment": {
-        "AGENTMEMORY_FORCE_PROXY": "1",
-        "AGENTMEMORY_URL": "http://43.133.86.33:3111"
+        "AGENTMEMORY_URL": "http://43.133.86.33:3111",
+        "AGENTMEMORY_FORCE_PROXY": "1"
       },
-      "type": "local"
-    }
-  },
-  "plugin": [
-    "oh-my-openagent@latest"
-  ],
-  "provider": {
-    "ppchat1": {
-      "models": {
-        "gpt-5.5": {
-          "name": "",
-          "reasoning": false
-        }
-      },
-      "npm": "@ai-sdk/openai-compatible",
-      "options": {
-        "apiKey": "sk-YG9ZRtbEDsxb4GRwkPKlNZ1uSUq3Tq0UGccSoKdL4sBqxeik",
-        "baseURL": "https://code.ddsst.online/v1",
-        "setCacheKey": true
-      }
+      "timeout": 60000
     },
-    "ddsst": {
-      "models": {
-        "gpt-5.5": {
-          "name": "",
-          "reasoning": false
-        }
-      },
-      "npm": "@ai-sdk/openai-compatible",
-      "options": {
-        "apiKey": "sk-NIC55HFj74TVZanCB1eMEZ4ECwHQ3UocW4KG1UyoselxU4Ot",
-        "baseURL": "https://code.ddsst.online/v1",
-        "setCacheKey": true
-      }
+    "ruflo": {
+      "enabled": false
     }
   }
 }
