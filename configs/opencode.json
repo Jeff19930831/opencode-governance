@@ -1,12 +1,27 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "agentmemory": {
+      "command": [
+        "cmd",
+        "/c",
+        "npx",
+        "-y",
+        "@agentmemory/mcp@0.9.24"
+      ],
+      "enabled": true,
+      "environment": {
+        "AGENTMEMORY_FORCE_PROXY": "1",
+        "AGENTMEMORY_URL": "http://43.133.86.33:3111"
+      },
+      "type": "local"
+    }
+  },
+  "plugin": [
+    "oh-my-openagent@4.8.1"
+  ],
   "provider": {
     "ppchat-codex": {
-      "npm": "@ai-sdk/openai",
-      "options": {
-        "baseURL": "https://code.ppchat.vip/v1",
-        "apiKey": "sk-YG9ZRtbEDsxb4GRwkPKlNZ1uSUq3Tq0UGccSoKdL4sBqxeik"
-      },
       "models": {
         "gpt-5.5": {
           "name": "gpt-5.5",
@@ -14,31 +29,12 @@
             "reasoningEffort": "high"
           }
         }
-      }
-    }
-  },
-  "plugin": [
-    "oh-my-openagent@latest"
-  ],
-  "mcp": {
-    "agentmemory": {
-      "type": "local",
-      "command": [
-        "cmd",
-        "/c",
-        "npx",
-        "-y",
-        "@agentmemory/mcp"
-      ],
-      "enabled": true,
-      "environment": {
-        "AGENTMEMORY_URL": "http://43.133.86.33:3111",
-        "AGENTMEMORY_FORCE_PROXY": "1"
       },
-      "timeout": 60000
-    },
-    "ruflo": {
-      "enabled": false
+      "npm": "@ai-sdk/openai",
+      "options": {
+        "apiKey": "sk-YG9ZRtbEDsxb4GRwkPKlNZ1uSUq3Tq0UGccSoKdL4sBqxeik",
+        "baseURL": "https://code.ppchat.vip/v1"
+      }
     }
   }
 }

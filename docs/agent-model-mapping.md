@@ -1,6 +1,6 @@
 # Agent ↔ Model 映射表
 
-> 最后更新: 2026-06-03
+> 最后更新: 2026-06-04
 > 配置文件: `configs/oh-my-openagent.json`
 
 ## 设计原则
@@ -30,7 +30,7 @@
 | Agent | 模型 | Variant | Fallback | 角色 |
 |-------|------|---------|----------|------|
 | **Oracle** | `ppchat1/gpt-5.5` | high | `google/gemini-3.1-pro-preview` (high) | 架构咨询、复杂调试 |
-| **Prometheus** | `ppchat1/gpt-5.5` | high | `google/gemini-3.1-pro-preview` | 战略规划、任务拆解 |
+| **Prometheus** | `ppchat1/gpt-5.5` | xhigh | `google/gemini-3.1-pro-preview` | 战略规划、任务拆解 |
 | **Metis** | `ppchat1/gpt-5.5` | high | `kimi-for-coding/k2p5` | 计划咨询、需求分析 |
 | **Momus** | `ppchat1/gpt-5.5` | xhigh | `google/gemini-3.1-pro-preview` (high) | 计划审查、质量把关 |
 
@@ -53,16 +53,16 @@
 
 通过 `task(category="...")` 调用时，Sisyphus-Junior 会自动选择对应模型：
 
-| Category | 默认模型 | 用途 |
-|----------|---------|------|
-| `quick` | `opencode/gpt-5-nano` | 单文件修改、打字错误 |
-| `deep` | `opencode/gpt-5-nano` | 自主研究 + 执行 |
-| `ultrabrain` | `opencode/gpt-5-nano` | 复杂逻辑、架构决策 |
-| `unspecified-low` | `opencode/gpt-5-nano` | 中等复杂度任务 |
-| `unspecified-high` | `opencode/gpt-5-nano` | 复杂任务 |
-| `visual-engineering` | `zai-coding-plan/glm-5` | 前端、UI/UX、设计 |
-| `writing` | `opencode/gpt-5-nano` | 文档、写作 |
-| `artistry` | `opencode/gpt-5-nano` | 创意任务 |
+| Category | 默认模型 | Variant | Fallback | 用途 |
+|----------|---------|---------|----------|------|
+| `quick` | `zai-coding-plan/glm-4.7` | - | `google/gemini-3-flash-preview` | 单文件修改、打字错误 |
+| `deep` | `zai-coding-plan/glm-5.1` | medium | `google/gemini-3.1-pro-preview` (high) | 自主研究 + 执行 |
+| `ultrabrain` | `zai-coding-plan/glm-5.1` | xhigh | `google/gemini-3.1-pro-preview` (high) | 复杂逻辑、架构决策 |
+| `unspecified-low` | `zai-coding-plan/glm-5.1` | medium | `google/gemini-3-flash-preview` | 中等复杂度任务 |
+| `unspecified-high` | `zai-coding-plan/glm-5.1` | medium | `google/gemini-3-flash-preview` | 复杂任务 |
+| `visual-engineering` | `zai-coding-plan/glm-5` | high | `zai-coding-plan/glm-5`, `kimi-for-coding/k2p5` | 前端、UI/UX、设计 |
+| `writing` | `zai-coding-plan/glm-4.7` | - | - | 文档、写作 |
+| `artistry` | `zai-coding-plan/glm-4.7` | high | `openai/gpt-5.5` | 创意任务 |
 
 > ⚠️ **注意**: Category 模型目前大部分仍为默认配置（gpt-5-nano），建议逐步调整为 glm-5.1 以保持一致性。
 
@@ -108,4 +108,7 @@
 | 2026-06-03 | Sisyphus 从 `glm-5` 改为 `glm-5.1` | 升级主模型 |
 | 2026-06-03 | 思考类 agent 统一用 `ppchat1/gpt-5.5` | 逻辑推理更强 |
 | 2026-06-03 | Explore/Librarian 改为 `kimi-for-coding/k2.6` | 长上下文搜索 |
+| 2026-06-04 | Prometheus variant 改为 `xhigh` | 战略规划需要更高质量 |
+| 2026-06-04 | `deep`/`ultrabrain`/`unspecified-high`/`unspecified-low` 改为 `glm-5.1` | 大型项目编码需要最强模型 |
+| 2026-06-04 | 其余 category 从 `gpt-5-nano` 改为 `glm-4.7` | 提升质量，移除 opencode 默认模型 |
 

@@ -2,25 +2,18 @@
 
 ## 活跃计划 (Active)
 
-### 2026-06: 初始化 opencode-governance 项目
-- [x] 创建项目目录和 git 仓库
-- [x] 复制当前配置文件 (opencode.json, oh-my-openagent.json)
-- [x] 编写 README 和文档结构
-- [x] 编写 agent-model-mapping.md
-- [x] 编写 team-mode.md
-- [ ] 编写 handoff.md
-- [ ] 首次 checkpoint (git commit + push)
+_暂无进行中事项_
 
 ## 待办 (Next)
 
 ### 短期
-- [ ] 将 Category 路由模型统一调整为 glm-5.1 (目前大部分仍为 gpt-5-nano)
-- [ ] 添加 omo 安装/升级 runbook
-- [ ] 记录 MCP 配置 (agentmemory, ruflo)
+- [ ] 添加 omo 安装/升级 runbook（升级 = 改 pin 版本 + 重填缓存，见 startup-performance.md 预防规则）
+- [ ] 记录 MCP 配置 ADR（agentmemory 已在 runbook 覆盖；补 codegraph / websearch 等插件自带 MCP 的说明）
+- [ ] Zed / ZCode 常驻 opencode 实例重启后，验证新配置生效（ruflo 不再出现、启动 <5s）
 
 ### 中期
 - [ ] 建立配置变更 review 流程 (修改前必须更新本文档)
-- [ ] 添加自动化检查脚本 (验证配置完整性)
+- [ ] 添加自动化检查脚本 (验证配置完整性 + 检测 `@latest` 写法回潮 + 插件缓存目录非空)
 - [ ] 记录每个 ADR 的决策背景
 
 ### 长期
@@ -28,9 +21,10 @@
 - [ ] 根据使用数据优化模型分配
 - [ ] 建立配置 A/B 测试流程
 
-## 归档 (Archived)
+## 归档 (Archived Plans)
 
-_暂无_
+- 2026-06 初始化项目 → 已全部完成，见 [progress.md](./progress.md)（仓库/配置快照/文档/handoff/首次 checkpoint）
+- 2026-06-04 Category 路由模型统一调整为 glm 系 → 完成，见 [progress.md](./progress.md)
 
 ---
 
